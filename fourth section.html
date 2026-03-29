@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>My Anchor 🌿</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet"/>
+
+<style>
+  /* ══════════ BASE STYLES & VARIABLES ══════════ */
+  :root {
+    --rose: #ECCAC6;
+    --deep-rose: #c4837a;
+    --pink: #D0AFAB;
+    --mint: #C2E5CD;
+    --deep-mint: #7eb592;
+    --blue: #C9D8DE;
+    --deep-blue: #7c9ba8;
+    --gold: #F7EAB3;
+    --text-main: #4a3530;
+    --bg-light: #fdfbf9;
+  }
+
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff0f0;
+    background-image: radial-gradient(circle at 50% 0%, #fffaf9 0%, #fff0f0 100%);
+    color: var(--text-main);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* ══════════ INTRO SCREEN (CUTE ENVELOPE) ══════════ */
+  #intro-screen {
+    position: fixed; inset: 0;
+    background: linear-gradient(135deg, #fdfbf9 0%, #faecee 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 9999; transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  
+  .intro-cartoon { 
+    cursor: pointer; 
+    animation: floatIntro 3s ease-in-out infinite; 
+    transition: transform 0.3s ease; 
+    text-align: center; 
+  }
+  .intro-cartoon:hover { transform: scale(1.08); }
+  
+  .envelope-emoji { font-size: 6rem; filter: drop-shadow(0 10px 15px rgba(236,160,140,0.3)); }
+  .intro-text { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: var(--deep-rose); margin-top: 15px; }
+  .intro-subtext { font-size: 0.85rem; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; animation: pulseGlow 2s infinite; }
+
+  @keyframes floatIntro { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+  /* ══════════ MAIN CONTENT ══════════ */
+  #main-content { opacity: 0; display: none; transform: translateY(40px); transition: all 1.5s ease; padding-bottom: 5rem; }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  /* ══════════ GLASSMORPHISM CARD ══════════ */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 24px; padding: 3rem;
+    box-shadow: 0 20px 45px rgba(208,175,171,0.15); max-width: 800px; margin: 4rem auto 0; position: relative; z-index: 10;
+  }
+
+  .section-eyebrow { display: inline-block; padding: 8px 20px; border-radius: 30px; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(208,175,171,.2); color: var(--deep-rose); margin-bottom: 1rem; text-align: center; width: 100%; box-sizing: border-box; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; margin: 0 0 2rem 0; line-height: 1.2; color: var(--text-main); text-align: center; }
+  .section-title em { color: var(--deep-rose); font-style: italic; }
+
+  /* TEXT & URDU BLOCKS */
+  .trib-para { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: #5a4b48; text-align: justify; }
+  .highlight-text { font-weight: 600; color: var(--deep-rose); background: rgba(236,202,198,0.2); padding: 0 5px; border-radius: 4px; }
+  
+  .urdu-block {
+    font-family: 'Noto Nastaliq Urdu', serif; font-size: 1.4rem; line-height: 2.8; direction: rtl; text-align: center;
+    background: linear-gradient(135deg, rgba(236,202,198,0.1) 0%, rgba(255,255,255,0.8) 100%);
+    border: 1px solid rgba(236,202,198,0.5); padding: 2.5rem 1.5rem; margin: 3rem 0;
+    border-radius: 16px; color: var(--deep-rose); box-shadow: inset 0 0 20px rgba(255,255,255,0.5);
+  }
+
+  .signature-block { margin-top: 4rem; display: flex; flex-direction: column; align-items: center; border-top: 1px solid rgba(236,202,198,0.3); padding-top: 2rem; }
+  .sig-name-text { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--deep-rose); margin: 5px 0; }
+
+  /* ══════════ SMILE BUTTON & CARTOON POPUP ══════════ */
+  .smile-btn-container { text-align: center; margin-top: 3rem; }
+  .smile-btn { 
+    background: linear-gradient(135deg, var(--deep-rose), #d49a92); border: none; border-radius: 50px; 
+    padding: 18px 45px; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 600; color: white; 
+    cursor: pointer; box-shadow: 0 10px 25px rgba(196,131,122,0.4); transition: all 0.3s ease; 
+    animation: pulseGlow 2s infinite;
+  }
+  .smile-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 35px rgba(196,131,122,0.6); }
+
+  #cute-popup {
+    position: fixed; inset: 0; background: rgba(253, 251, 249, 0.85); backdrop-filter: blur(5px);
+    z-index: 999999; display: flex; justify-content: center; align-items: flex-end;
+    visibility: hidden; opacity: 0; transition: all 0.5s ease; pointer-events: none;
+  }
+  
+  .popup-content {
+    text-align: center; transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding-bottom: 10vh;
+  }
+
+  #cute-popup.show { visibility: visible; opacity: 1; }
+  #cute-popup.show .popup-content { transform: translateY(0); }
+
+  .popup-bear { font-size: 8rem; line-height: 1; margin-bottom: -10px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); }
+  .popup-message {
+    background: #fff; border: 3px solid var(--rose); padding: 15px 30px; border-radius: 30px;
+    font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--deep-rose);
+    box-shadow: 0 10px 20px rgba(236,202,198,0.4); position: relative;
+    animation: floatIntro 3s ease-in-out infinite;
+  }
+  .popup-message::after {
+    content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+    border-width: 12px 12px 0; border-style: solid; border-color: #fff transparent transparent transparent;
+  }
+
+  @media (max-width: 768px) {
+    .section-title { font-size: 2.4rem; } .glass-card { padding: 1.5rem; margin-top: 2rem; }
+    .urdu-block { font-size: 1.15rem; padding: 1.5rem; line-height: 2.4; }
+    .smile-btn { padding: 15px 30px; font-size: 1.1rem; }
+    .popup-bear { font-size: 6rem; } .popup-message { font-size: 1.8rem; padding: 10px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="intro-screen">
+  <div class="intro-cartoon" onclick="startJourney()">
+    <div class="envelope-emoji">💌</div>
+    <div class="intro-text">For My Best Friend</div>
+    <div class="intro-subtext">Tap to open a special note ✨</div>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="glass-card reveal">
+    <p class="section-eyebrow">🌷 &nbsp; Trust, Actions & The Truest Anchor &nbsp; 🌷</p>
+    <h2 class="section-title">Because you saw the <em>truth</em><br/>when the world was loud.</h2>
+
+    <p class="trib-para reveal">
+      Tanzeela, there is a very rare kind of peace that comes when you find someone who truly understands your nature. Someone who doesn't just listen to the noise around them, but looks directly at your heart. You are that person for me. My mental peace. My absolute best friend.
+    </p>
+
+    <p class="trib-para reveal">
+      I want to thank you for something deeply important today. When things were complicated, when people like <span class="highlight-text">Sameer, Zain, and Sarmad</span> tried to paint a different picture or cast doubts, you didn't let their words cloud your judgment. You didn't trust the rumors or the temporary chaos. Instead, <strong>you trusted my actions.</strong> You trusted the history we share and the nature you know I possess. 
+    </p>
+
+    <p class="trib-para reveal">
+      It takes a very strong, mature, and pure-hearted person to ignore the crowd and believe in the actions of their friend. You supported me mentally when I needed it the most. You became my anchor. Knowing that you trust me over anyone else's version of the story is a gift I will protect for the rest of my life.
+    </p>
+
+    <div class="urdu-block reveal">
+      سچی دوستی وہ نہیں جو صرف ہنسی مذاق میں ساتھ دے،<br>
+      بلکہ وہ ہے جو ہجوم اور شور میں بھی آپ کی سچائی کو پہچان لے۔<br><br>
+      جب دنیا نے، اور سمیر، زین، اور سرمد جیسے لوگوں نے،<br>
+      بدگمانیاں پیدا کرنی چاہیں...<br>
+      تو تم نے ان کی باتوں کے بجائے، <em>میرے عمل اور میری فطرت</em> پر یقین کیا۔<br><br>
+      میرے کردار پر اس اٹوٹ بھروسے اور مجھے ذہنی سکون دینے کے لیے —<br>
+      <span style="font-size:1.1em; font-weight:bold;">تمہارا شکریہ، میری سب سے پیاری اور بہترین دوست۔</span>
+    </div>
+
+    <div style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--deep-rose); text-align:center; margin:2rem 0;" class="reveal">
+      I promise to always be the person you believed in. 🌸
+    </div>
+
+    <div class="smile-btn-container reveal">
+      <button class="smile-btn" onclick="showCuteCartoon()">✨ Tap for a little magic ✨</button>
+      <p style="font-size:0.8rem; color:#999; margin-top:12px; font-family: 'Montserrat', sans-serif;">(Because your smile is my favorite thing)</p>
+    </div>
+
+    <div class="signature-block reveal">
+      <span style="font-size:0.9rem; color:#777; text-transform:uppercase; letter-spacing:2px;">Yours truly,</span>
+      <span class="sig-name-text">Shahab Uddin Ali Khan</span>
+      <span style="font-size:0.85rem; color:#888; margin-top:5px;">Your anchor. Your safe place. Always. 🌿</span>
+    </div>
+  </div>
+</div>
+
+<div id="cute-popup">
+  <div class="popup-content">
+    <div class="popup-message">Peekaboo! Keep smiling Tanzeela! 💖</div>
+    <div class="popup-bear">🧸✨</div>
+  </div>
+</div>
+
+<script>
+  // Intro Screen Logic
+  function startJourney() {
+    const intro = document.getElementById('intro-screen');
+    const main = document.getElementById('main-content');
+    
+    // Envelope animation before hiding
+    intro.style.opacity = '0';
+    intro.style.transform = 'translateY(-30px) scale(1.1)';
+    
+    setTimeout(() => {
+      intro.style.display = 'none'; 
+      main.style.display = 'block';
+      setTimeout(() => {
+        main.style.opacity = '1';
+        main.style.transform = 'translateY(0)';
+        reveal(); // Trigger scroll reveals instantly for visible elements
+      }, 50);
+    }, 1000); 
+  }
+
+  // Scroll Reveal Logic
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 50;
+      if (elementTop < windowHeight - elementVisible) { 
+        reveals[i].classList.add("active"); 
+      }
+    }
+  }
+  window.addEventListener("scroll", reveal);
+
+  // Cute Cartoon Popup Logic
+  function showCuteCartoon() {
+    const popup = document.getElementById('cute-popup');
+    
+    // Show the popup
+    popup.classList.add('show');
+    
+    // Create random hearts on the screen for extra effect
+    createHearts();
+
+    // Hide the popup after 4 seconds automatically
+    setTimeout(() => {
+      popup.classList.remove('show');
+    }, 4000);
+  }
+
+  // Floating Hearts Logic
+  function createHearts() {
+    for(let i=0; i<20; i++) {
+      let heart = document.createElement("div");
+      heart.innerHTML = ["🌸", "💛", "✨", "🦋", "💖", "🧸"][Math.floor(Math.random() * 6)];
+      heart.style.position = "fixed";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-20px";
+      heart.style.fontSize = (Math.random() * 25 + 15) + "px";
+      heart.style.zIndex = "9999999";
+      heart.style.transition = "all 3.5s cubic-bezier(0.25, 0.8, 0.25, 1)";
+      heart.style.pointerEvents = "none";
+      document.body.appendChild(heart);
+      
+      setTimeout(() => { 
+        heart.style.transform = `translateY(-120vh) translateX(${Math.random() * 200 - 100}px) rotate(${Math.random()*360}deg)`; 
+        heart.style.opacity = "0"; 
+      }, 50);
+      
+      setTimeout(() => { heart.remove(); }, 3500);
+    }
+  }
+</script>
+
+</body>
+</html>

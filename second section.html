@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Memory Lane 🌸</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+  /* =========================================================
+     GOD LEVEL CUTE INTRO (PURE CSS - NO JS DEPENDENCY)
+     ========================================================= */
+  #intro-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #fcf8f7;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: vanishOverlay 0.6s ease-in-out forwards 3s; 
+  }
+
+  @keyframes vanishOverlay {
+    0% { opacity: 1; visibility: visible; }
+    100% { opacity: 0; visibility: hidden; pointer-events: none; display: none; }
+  }
+
+  .intro-bear {
+    font-size: 6rem;
+    transform: scale(0);
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+  }
+
+  .intro-heart {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0;
+    animation: centerHeartFly 2.5s ease-in-out forwards 0.5s; 
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0) translateY(50px); }
+    100% { transform: scale(1) translateY(0); }
+  }
+
+  @keyframes centerHeartFly {
+    0% { opacity: 0; transform: translateY(0) scale(0.5); }
+    20% { opacity: 1; transform: translateY(-40px) scale(1.2); }
+    80% { opacity: 1; transform: translateY(-150px) scale(1.5); }
+    100% { opacity: 0; transform: translateY(-200px) scale(2); }
+  }
+
+  /* =========================================================
+     MAIN CONTENT ANIMATION
+     ========================================================= */
+  #main-content {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: revealMain 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 3.2s;
+  }
+
+  @keyframes revealMain {
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* =========================================================
+     BAQI PURANA SUPER CUTE DESIGN & BUTTON CSS
+     ========================================================= */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fcf8f7;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .carousel-container {
+    width: 100%;
+    padding: 3rem 0 5rem;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .swipe-instruction {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: #c4837a;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    animation: pulseText 2s infinite;
+  }
+  
+  @keyframes pulseText {
+    0%, 100% { opacity: 0.7; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-5px); }
+  }
+
+  .swiper {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    cursor: grab !important;
+  }
+  
+  .swiper:active { cursor: grabbing !important; }
+
+  .swiper-slide { width: 280px; height: 380px; }
+
+  .cute-polaroid {
+    background: #fff; width: 100%; height: 100%;
+    border-radius: 20px; padding: 14px 14px 70px 14px;
+    position: relative; box-sizing: border-box; display: flex;
+    flex-direction: column; align-items: center;
+    border: 3px solid #fdf5f4; box-shadow: 0 15px 35px rgba(208, 175, 171, 0.3);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: floatCard 4s ease-in-out infinite; 
+  }
+  
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .swiper-slide-active .cute-polaroid {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 45px rgba(236, 160, 140, 0.6);
+    border-color: #fce8dc; animation: none; 
+  }
+
+  .tape {
+    position: absolute; top: -12px; width: 110px; height: 30px;
+    background: rgba(247, 234, 179, 0.9); transform: rotate(-3deg);
+    z-index: 2; border-radius: 3px; box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    backdrop-filter: blur(2px);
+  }
+  .tape-pink { background: rgba(236, 202, 198, 0.9); transform: rotate(2deg); }
+  .tape-mint { background: rgba(194, 229, 205, 0.9); transform: rotate(-1deg); }
+  .tape-blue { background: rgba(201, 216, 222, 0.9); transform: rotate(3deg); }
+
+  .cute-polaroid img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 12px; box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+  }
+
+  .cute-caption {
+    position: absolute; bottom: 18px; font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem; font-weight: 600; color: #c4837a;
+    text-align: center; width: 100%; left: 0;
+  }
+
+  .active-heart {
+    position: absolute; font-size: 1.6rem; opacity: 0;
+    pointer-events: none; z-index: 10;
+  }
+  
+  .swiper-slide-active .active-heart.h1 { animation: flyUpHeart 2s ease-in infinite; }
+  .swiper-slide-active .active-heart.h2 { animation: flyUpHeart 2.5s ease-in infinite 0.5s; font-size: 1.2rem; }
+  .swiper-slide-active .active-heart.h3 { animation: flyUpHeart 2.2s ease-in infinite 1s; font-size: 1.8rem; }
+
+  @keyframes flyUpHeart {
+    0% { transform: translateY(0) scale(0.8) rotate(-10deg); opacity: 0; }
+    20% { opacity: 0.9; }
+    100% { transform: translateY(-70px) scale(1.3) rotate(20deg); opacity: 0; }
+  }
+
+  .swiper-pagination-bullet { background: #c4837a; opacity: 0.4; }
+  .swiper-pagination-bullet-active { opacity: 1; transform: scale(1.3); }
+
+  /* EMOTIONAL BUTTON ANIMATION */
+  .special-btn {
+    display: inline-block;
+    background-color: #c4837a;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 36px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(196, 131, 122, 0.4);
+    transition: all 0.3s ease;
+    animation: pulseBtn 2s infinite;
+    letter-spacing: 1px;
+  }
+
+  .special-btn:hover {
+    background-color: #a87b74;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(196, 131, 122, 0.5);
+  }
+
+  @keyframes pulseBtn {
+    0% { box-shadow: 0 0 0 0 rgba(196, 131, 122, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(196, 131, 122, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(196, 131, 122, 0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .swiper-slide { width: 210px; height: 290px; }
+    .cute-polaroid { padding: 10px 10px 55px 10px; }
+    .cute-caption { font-size: 1.25rem; bottom: 15px; }
+    .tape { width: 85px; height: 22px; top: -10px; }
+    .swiper-slide-active .cute-polaroid { transform: translateY(-8px) scale(1.08); }
+    .active-heart { font-size: 1.1rem !important; }
+    .special-btn { font-size: 1rem; padding: 14px 28px; }
+  }
+
+  @media (max-width: 400px) {
+    .swiper-slide { width: 180px; height: 260px; }
+    .cute-polaroid { padding: 8px 8px 45px 8px; }
+    .cute-caption { font-size: 1.1rem; bottom: 12px; }
+    .tape { width: 75px; height: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="intro-overlay">
+  <div class="intro-heart">💖</div>
+  <div class="intro-bear">🧸</div>
+</div>
+
+<div id="main-content">
+  <main id="p2" class="page active">
+    
+    <div style="position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(to right,#c4837a,#f7eab3,#c2e5cd,#c9d8de,#eccac6,#c4837a);z-index:20;"></div>
+
+    <div class="p2-header" style="padding-top: 3rem; text-align: center;">
+      <span style="font-size: 1.2rem; color: #a87b74; font-weight: 500; letter-spacing: 2px;">📸 &nbsp; the story of becoming</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: #4a3b38; margin: 10px 0;">
+        How a girl quietly becomes<br/>
+        <em style="font-family: 'Dancing Script', cursive; color: #c4837a;">an entire universe</em> 🌙
+      </h2>
+      <p style="color: #7a6560; font-size: 1rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+        These are not just photographs. They are fragments of a beautiful soul.<br/>
+        Each slide holds a heartbeat, a smile, and a story worth keeping forever.
+      </p>
+    </div>
+
+    <div class="carousel-container">
+      <p class="swipe-instruction">✨ Swipe to walk through the memories ✨</p>
+      
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="carousel-wrapper">
+          </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <div style="max-width: 600px; margin: 0 auto; text-align: center; padding: 1rem 1rem 2rem;">
+      <h3 style="font-family: 'Dancing Script', cursive; font-size: 2rem; color: #c4837a; margin-bottom: 1rem;">Because every version of you is precious...</h3>
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #7a6560; line-height: 1.8;">
+        Look at all these moments. Whether you were laughing, staying quiet, or just simply existing—you brought light into the frame. Never forget how beautiful your journey has been. 💛
+      </p>
+    </div>
+
+    <div style="text-align: center; padding-bottom: 4rem;">
+      <a href="third section.html" class="special-btn">
+        ✨ A Special Tribute to the First Hero ✨
+      </a>
+    </div>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  // ====== EXACTLY 16 IMAGES ======
+  const wrapper = document.getElementById('carousel-wrapper');
+  
+  const images = [
+    'assets/1.jpeg',   // 1
+    'assets/2.jpeg',   // 2
+    'assets/3.jpeg',   // 3
+    'assets/4.jpeg',   // 4
+    'assets/5.jpeg',   // 5
+    'assets/6.jpeg',   // 6
+    'assets/7.jpeg',   // 7
+    'assets/8.jpeg',   // 8
+    'assets/9.jpeg',   // 9
+    'assets/11.jpeg',  // 11
+    'assets/12.jpeg',  // 12
+    'assets/13.jpeg',  // 13
+    'assets/14.jpeg',  // 14
+    'assets/15.jpeg',  // 15
+    'assets/16.jpeg'   // 16
+  ];
+
+  const cuteEmojis = ['🌸', '🥺', '💛', '🦋', '🎀', '🧸', '🌷', '🌙', '💖', '✨'];
+  const tapeColors = ['tape', 'tape-pink', 'tape-mint', 'tape-blue'];
+  const heartEmojis = ['💖', '💕', '✨', '🌸', '🩷'];
+
+  images.forEach((imgSrc, index) => {
+    const emoji = cuteEmojis[Math.floor(Math.random() * cuteEmojis.length)];
+    const tape = tapeColors[Math.floor(Math.random() * tapeColors.length)];
+    
+    const randHeart1 = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    const randHeart2 = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    const randHeart3 = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    
+    slide.innerHTML = `
+      <div class="cute-polaroid">
+        <div class="tape ${tape}"></div>
+        
+        <span class="active-heart h1" style="top: -10px; left: -10px;">${randHeart1}</span>
+        <span class="active-heart h2" style="top: 20px; right: -20px;">${randHeart2}</span>
+        <span class="active-heart h3" style="bottom: 80px; left: -20px;">${randHeart3}</span>
+        
+        <img src="${imgSrc}" alt="Memory ${index + 1}" onerror="this.src='https://via.placeholder.com/300x400?text=Your+Image+Here'" />
+        
+        <div class="cute-caption">Memory ${index + 1} <span style="font-size: 1.2rem">${emoji}</span></div>
+      </div>
+    `;
+    wrapper.appendChild(slide);
+  });
+
+  // ====== SWIPER INITIALIZATION ======
+  var swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true, 
+    centeredSlides: true,
+    slidesPerView: "auto",
+    initialSlide: 2, 
+    coverflowEffect: {
+      rotate: 10,       
+      stretch: 0,       
+      depth: 300,       
+      modifier: 1,      
+      slideShadows: false, 
+    },
+    loop: true, 
+    autoplay: {
+      delay: 3000, 
+      disableOnInteraction: false, 
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+    },
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+ 

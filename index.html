@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>For Tanzeela Aiman 🌸</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+  /* ══════════ BASE STYLES & FIXING SPACING ══════════ */
+  :root {
+    --rose: #ECCAC6; --deep-rose: #c4837a;
+    --pink: #D0AFAB; --mint: #C2E5CD;
+    --blue: #C9D8DE; --yellow: #F7EAB3;
+    --bg-light: #fdfbf9; --text-main: #4a3530;
+  }
+
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    overflow-x: hidden;
+    /* Normal cursor restored */
+    cursor: default; 
+  }
+
+  /* ══════════ PAGE NAVIGATION & LAYOUT ══════════ */
+  .page {
+    display: none; min-height: 100vh;
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem 1rem; position: relative; opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+  .page.active {
+    display: flex; opacity: 1;
+    animation: fadeIn 1s ease forwards;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Navigation Bar */
+  #side-nav {
+    position: fixed; top: 20px; right: 20px; z-index: 100;
+    display: flex; gap: 15px; background: rgba(255,255,255,0.7);
+    padding: 10px 20px; border-radius: 30px; backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+  .snav-item { cursor: pointer; font-size: 0.9rem; color: #888; transition: 0.3s; font-weight: 500; }
+  .snav-item:hover, .snav-item.active { color: var(--deep-rose); }
+
+  /* ══════════ GLASSMORPHISM CARDS ══════════ */
+  .glass {
+    background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 28px; padding: 3rem;
+    box-shadow: 0 15px 40px rgba(74,53,48,0.06); max-width: 750px; text-align: center;
+    position: relative; z-index: 10;
+  }
+
+  /* ══════════ TYPOGRAPHY & ELEMENTS ══════════ */
+  .welcome-name { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; margin: 10px 0; line-height: 1.1; }
+  .welcome-name em { color: var(--deep-rose); font-style: italic; }
+  .sub-name { display: block; font-size: 1.2rem; font-family: 'Dancing Script', cursive; color: #888; margin-top: 10px; }
+  .hero-quote-text { font-size: 1.1rem; line-height: 1.8; color: #665; margin: 2rem 0; font-style: italic; }
+  
+  /* Tags */
+  .tag-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 2rem; }
+  .tag { padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  
+  /* Button */
+  .action-btn {
+    background: linear-gradient(135deg, var(--rose), var(--pink)); color: white;
+    border: none; padding: 15px 35px; border-radius: 30px; font-size: 1.1rem; font-family: 'Montserrat', sans-serif;
+    cursor: pointer; box-shadow: 0 10px 25px rgba(236,160,140,0.4); transition: 0.3s; margin-top: 1rem;
+  }
+  .action-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(236,160,140,0.6); }
+
+  /* ══════════ NEW IMPRESSIVE SECTION CSS ══════════ */
+  .magic-heading { font-family: 'Dancing Script', cursive; font-size: 3.2rem; color: var(--deep-rose); margin-bottom: 1rem; }
+  .magic-text { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; line-height: 1.8; color: var(--text-main); margin-bottom: 2rem; }
+  .magic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 2rem; }
+  .magic-box { background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: 0.3s; }
+  .magic-box:hover { transform: translateY(-5px); background: #fff; }
+  .box-icon { font-size: 2rem; margin-bottom: 10px; }
+  .box-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 5px; color: var(--deep-rose); }
+  .box-desc { font-size: 0.8rem; color: #777; line-height: 1.5; }
+
+  @media (max-width: 768px) {
+    .glass { padding: 2rem 1.5rem; }
+    .welcome-name { font-size: 2.8rem; }
+    .magic-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Floating Animation for SVG */
+  .float-anim { animation: float 5s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+</style>
+</head>
+<body>
+
+<nav id="side-nav" aria-label="Page navigation"></nav>
+
+<main id="p1" class="page active">
+  <div id="p1-card" class="glass">
+    
+    <div class="bear-wrap float-anim" style="width: 120px; height: 120px; margin: 0 auto 1rem;">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+        <defs>
+          <radialGradient id="bearBody" cx="50%" cy="45%" r="50%">
+            <stop offset="0%" stop-color="#f5d8c8"/><stop offset="100%" stop-color="#e0bba8"/>
+          </radialGradient>
+          <radialGradient id="bearBelly" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fce8dc"/><stop offset="100%" stop-color="#f5d4c2"/>
+          </radialGradient>
+          <radialGradient id="bearEar" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f0c8b8"/><stop offset="100%" stop-color="#d9a898"/>
+          </radialGradient>
+        </defs>
+        <circle cx="58" cy="58" r="22" fill="url(#bearEar)"/>
+        <circle cx="142" cy="58" r="22" fill="url(#bearEar)"/>
+        <ellipse cx="100" cy="90" rx="52" ry="50" fill="url(#bearBody)"/>
+        <ellipse cx="100" cy="103" rx="22" ry="17" fill="#f0c8b8"/>
+        <path d="M90 106 Q100 116 110 106" stroke="#c4837a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="84" cy="81" r="7" fill="#4a3530"/>
+        <circle cx="116" cy="81" r="7" fill="#4a3530"/>
+        <ellipse cx="72" cy="96" rx="10" ry="6" fill="rgba(236,160,140,.45)"/>
+        <ellipse cx="128" cy="96" rx="10" ry="6" fill="rgba(236,160,140,.45)"/>
+      </svg>
+    </div>
+
+    <p style="font-size: 0.85rem; letter-spacing: 2px; color: #888; text-transform: uppercase;">✦ a quiet letter, crafted only for you ✦</p>
+
+    <h1 class="welcome-name">
+      Tanzeela<br/><em>Aiman</em>
+      <span class="sub-name">— the rarest kind of soul ✨</span>
+    </h1>
+
+    <p class="hero-quote-text">
+      "In a world perpetually loud with noise and performance,<br/>
+      the rarest luxury in this life is a soul who simply<br/>
+      <em style="color:var(--deep-rose); font-weight: 500;">understands you</em> —<br/>
+      without explanation, without condition, without end."
+    </p>
+
+    <div class="tag-row">
+      <span class="tag">🌸 Cherished</span>
+      <span class="tag">🍃 Seen</span>
+      <span class="tag">💙 Protected</span>
+      <span class="tag">✨ Celebrated</span>
+    </div>
+
+    <button class="action-btn" onclick="goTo(1)">
+      <span>Open Your Letter ✨</span>
+    </button>
+  </div>
+</main>
+
+
+<main id="p2" class="page">
+  <div class="glass" style="max-width: 850px;">
+    
+    <div style="font-size: 3rem; margin-bottom: 10px; animation: float 4s infinite;">🦋</div>
+    <h2 class="magic-heading">The Magic You Hold</h2>
+    
+    <p class="magic-text">
+      Some people merely exist in this world, but you?<br>
+      <em>You make the world a softer place just by being in it.</em><br><br>
+      There is a quiet elegance in the way you care for others, a hidden strength in your silence, and a warmth in your presence that is impossible to ignore. Duniya tumhari muskurahat dekhti hai, par tumhare andar jo roshni aur khuloos (sincerity) hai, wo kisi aam insaan ki bas ki baat nahi. 
+    </p>
+
+    <div class="magic-grid">
+      <div class="magic-box">
+        <div class="box-icon">🕊️</div>
+        <div class="box-title">Your Grace</div>
+        <div class="box-desc">The way you handle storms with a smile. It is pure art.</div>
+      </div>
+      <div class="magic-box">
+        <div class="box-icon">💛</div>
+        <div class="box-title">Your Heart</div>
+        <div class="box-desc">Rare, unselfish, and full of empathy for everyone around you.</div>
+      </div>
+      <div class="magic-box">
+        <div class="box-icon">🌟</div>
+        <div class="box-title">Your Light</div>
+        <div class="box-desc">You don't just walk into a room, you bring comfort with you.</div>
+      </div>
+    </div>
+
+    <div style="margin: 3rem 0 2rem;">
+      <p style="font-family:'Dancing Script', cursive; font-size: 2rem; color: var(--deep-rose);">
+        "You are the poetry the world rarely gets to read."
+      </p>
+    </div>
+
+    <button class="action-btn" id="proceed-btn">
+      <span>Continue to the Next Page 🌸</span>
+    </button>
+
+  </div>
+</main>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ── SIMPLE PAGE NAVIGATION ── */
+  const PAGE_IDS = ['p1', 'p2'];
+  const PAGE_LABELS = ['Welcome 🌸', 'For You 💌'];
+  let cur = 0;
+
+  function buildNav() {
+    const nav = document.getElementById('side-nav');
+    nav.innerHTML = '';
+    PAGE_LABELS.forEach((lbl, i) => {
+      const item = document.createElement('div');
+      item.className = 'snav-item' + (i === 0 ? ' active' : '');
+      item.innerHTML = `<span>${lbl}</span>`;
+      item.addEventListener('click', () => goTo(i));
+      nav.appendChild(item);
+    });
+  }
+
+  function updateNav() {
+    document.querySelectorAll('.snav-item').forEach((el, i) => el.classList.toggle('active', i === cur));
+  }
+
+  // Globally expose goTo function
+  window.goTo = function(idx) {
+    if(idx === cur) return;
+    
+    // Smooth transition
+    const pages = document.querySelectorAll('.page');
+    pages[cur].style.opacity = '0';
+    
+    setTimeout(() => {
+      pages[cur].classList.remove('active');
+      cur = idx;
+      pages[cur].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateNav();
+    }, 500); // Wait for fade out
+  };
+
+  /* ── REDIRECT TO SECOND SECTION HTML ── */
+  document.getElementById('proceed-btn').addEventListener('click', () => {
+    window.location.href = 'second section.html';
+  });
+
+  buildNav();
+})();
+</script>
+
+</body>
+</html>

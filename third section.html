@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Always With You 🕊️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet"/>
+
+<style>
+  /* ══════════ BASE STYLES & VARIABLES ══════════ */
+  :root {
+    --rose: #ECCAC6;
+    --deep-rose: #c4837a;
+    --pink: #D0AFAB;
+    --mint: #C2E5CD;
+    --deep-mint: #7eb592;
+    --blue: #C9D8DE;
+    --deep-blue: #7c9ba8;
+    --gold: #F7EAB3;
+    --text-main: #4a3530;
+    --bg-light: #fdfbf9;
+  }
+
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* ══════════ INTRO SCREEN (CUTE BUNNY) ══════════ */
+  #intro-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: linear-gradient(135deg, #fdfbf9 0%, #faecee 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    z-index: 9999; transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  .intro-cartoon { cursor: pointer; animation: floatIntro 4s ease-in-out infinite; transition: transform 0.3s ease; text-align: center; }
+  .intro-cartoon:hover { transform: scale(1.05); }
+  .intro-text { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--deep-rose); margin-top: 20px; animation: fadeInOut 3s infinite; }
+  .intro-subtext { font-size: 0.9rem; color: #888; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; }
+  .heart-svg { animation: heartbeat 1.5s infinite; transform-origin: center; }
+
+  @keyframes floatIntro { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+  @keyframes heartbeat { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(236,202,198,0.5)); } 50% { transform: scale(1.15); filter: drop-shadow(0 0 20px rgba(236,202,198,0.9)); } }
+  @keyframes fadeInOut { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+  /* ══════════ MAIN CONTENT ══════════ */
+  #main-content { opacity: 0; display: none; transform: translateY(60px); transition: all 1.5s ease; }
+
+  /* ══════════ ANIMATIONS ══════════ */
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+  @keyframes pulseGlow { 0%, 100% { filter: drop-shadow(0 0 15px rgba(247,234,179,0.4)); } 50% { filter: drop-shadow(0 0 25px rgba(247,234,179,0.8)); } }
+  @keyframes starTwinkle { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+  @keyframes goldenGlow { 0%, 100% { box-shadow: 0 0 15px rgba(247,234,179,0.3); } 50% { box-shadow: 0 0 35px rgba(247,234,179,0.7); } }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+  .floating-anim { animation: float 6s ease-in-out infinite; }
+  .glowing-svg { animation: pulseGlow 4s ease-in-out infinite; }
+
+  /* ══════════ GLASSMORPHISM CARDS ══════════ */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 24px; padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; position: relative; z-index: 10;
+  }
+
+  /* ══════════ SECTIONS ══════════ */
+  #tribute-section { position: relative; padding: 6rem 1rem; background: linear-gradient(180deg, #e8f0f3 0%, var(--bg-light) 100%); text-align: center; perspective: 1000px; }
+  #promise-section { position: relative; padding: 6rem 1rem; background: linear-gradient(180deg, var(--bg-light) 0%, #fff0f0 100%); text-align: center; }
+
+  .stars { position: absolute; font-size: 1.5rem; animation: starTwinkle 4s infinite; }
+  .section-eyebrow { display: inline-block; padding: 8px 20px; border-radius: 30px; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(201,216,222,.4); color: var(--deep-blue); margin-bottom: 1rem; }
+  .promise-eyebrow { background: rgba(208,175,171,.2); color: var(--deep-rose); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; margin: 0 0 2rem 0; line-height: 1.2; color: var(--text-main); }
+  .section-title em { color: var(--deep-rose); font-style: italic; }
+
+  /* 🖼️ 3D FATHER'S FRAME (Added safely here) 🖼️ */
+  .father-frame-container {
+    width: 180px; height: 240px; margin: 0 auto 2.5rem auto; position: relative;
+    cursor: pointer; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); transform-style: preserve-3d; z-index: 15;
+  }
+  .father-frame-container:hover { transform: rotateY(15deg) rotateX(5deg) scale(1.05); }
+  .father-frame-main {
+    width: 100%; height: 100%; border-radius: 90px 90px 20px 20px;
+    background: #fff; border: 8px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; position: relative; z-index: 2;
+  }
+  .father-image { width: 100%; height: 100%; object-fit: cover; filter: sepia(10%) contrast(105%); }
+  .frame-deco { position: absolute; z-index: 3; pointer-events: none; }
+  .pearl-beads { top: -5px; left: -5px; right: -5px; bottom: -5px; border: 2px dotted var(--gold); border-radius: 95px 95px 25px 25px; opacity: 0.8; }
+  .flower-top { top: -15px; left: 50%; transform: translateX(-50%); font-size: 1.8rem; }
+  .flower-bottom-l { bottom: 25px; left: -10px; font-size: 1.5rem; transform: rotate(-15deg); }
+  .flower-bottom-r { bottom: 25px; right: -10px; font-size: 1.5rem; transform: rotate(15deg); }
+  .father-frame-container::after {
+    content: ''; position: absolute; inset: -10px; background: radial-gradient(circle, var(--gold) 0%, rgba(247,234,179,0) 70%);
+    border-radius: 100px 100px 30px 30px; z-index: 1; opacity: 0; transition: opacity 0.5s ease;
+  }
+  .father-frame-container:hover::after { opacity: 1; animation: goldenGlow 2s infinite; }
+
+  /* TEXT & URDU BLOCKS */
+  .trib-para { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: #5a4b48; }
+  
+  /* Asli Urdu Styling */
+  .urdu-block {
+    font-family: 'Noto Nastaliq Urdu', serif; font-size: 1.4rem; line-height: 2.6; direction: rtl; text-align: right;
+    background: rgba(236,202,198,0.15); border-right: 4px solid var(--deep-rose); padding: 2rem; margin: 2.5rem 0;
+    border-radius: 12px 0 0 12px; color: var(--deep-rose);
+  }
+  
+  .ameen-line { font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--deep-mint); margin-top: 2rem; }
+
+  .signature-block { margin-top: 3rem; display: flex; flex-direction: column; align-items: center; }
+  .sig-name-text { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--deep-rose); margin: 5px 0; }
+  .smile-btn { background: linear-gradient(135deg, var(--rose), var(--pink)); border: none; border-radius: 50px; padding: 15px 35px; font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; cursor: pointer; box-shadow: 0 10px 20px rgba(236,160,140,0.3); transition: all 0.3s ease; margin-top: 2rem; }
+  .smile-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 25px rgba(236,160,140,0.5); }
+
+  @media (max-width: 768px) {
+    .section-title { font-size: 2.2rem; } .glass-card { padding: 1.5rem; }
+    .father-frame-container { width: 150px; height: 200px; } .urdu-block { font-size: 1.1rem; padding: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="intro-screen">
+  <div class="intro-cartoon" onclick="startJourney()">
+    <svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="70" cy="50" rx="15" ry="40" fill="#fff" stroke="#ECCAC6" stroke-width="3" transform="rotate(-15 70 50)"/>
+      <ellipse cx="70" cy="50" rx="6" ry="25" fill="#fce4e4" transform="rotate(-15 70 50)"/>
+      <ellipse cx="130" cy="50" rx="15" ry="40" fill="#fff" stroke="#ECCAC6" stroke-width="3" transform="rotate(15 130 50)"/>
+      <ellipse cx="130" cy="50" rx="6" ry="25" fill="#fce4e4" transform="rotate(15 130 50)"/>
+      <circle cx="100" cy="110" r="45" fill="#fff" stroke="#ECCAC6" stroke-width="3"/>
+      <path d="M80 105 Q85 110 90 105" fill="none" stroke="#4a3530" stroke-width="3" stroke-linecap="round"/>
+      <path d="M110 105 Q115 110 120 105" fill="none" stroke="#4a3530" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="75" cy="115" rx="8" ry="5" fill="#ffccd5" opacity="0.8"/>
+      <ellipse cx="125" cy="115" rx="8" ry="5" fill="#ffccd5" opacity="0.8"/>
+      <circle cx="100" cy="112" r="3" fill="#ff99a8"/>
+      <path d="M100 115 Q95 120 90 118" fill="none" stroke="#4a3530" stroke-width="2" stroke-linecap="round"/>
+      <path d="M100 115 Q105 120 110 118" fill="none" stroke="#4a3530" stroke-width="2" stroke-linecap="round"/>
+      <g class="heart-svg" transform="translate(100, 155)">
+        <path d="M0 10 C0 10 -20 -10 -20 5 C-20 20 0 35 0 35 C0 35 20 20 20 5 C20 -10 0 10 0 10 Z" fill="#ff758c"/>
+      </g>
+      <circle cx="85" cy="145" r="10" fill="#fff" stroke="#ECCAC6" stroke-width="2"/>
+      <circle cx="115" cy="145" r="10" fill="#fff" stroke="#ECCAC6" stroke-width="2"/>
+    </svg>
+    <div class="intro-text">For Tanzeela 🌸</div>
+    <div class="intro-subtext">Tap the bunny to open ✨</div>
+  </div>
+</div>
+
+<div id="main-content">
+  
+  <section id="tribute-section">
+    <div class="stars" style="top:10%; left:15%;">✨</div>
+    <div class="stars" style="top:25%; right:20%; animation-delay:1.5s;">🌟</div>
+
+    <div class="reveal">
+      <p class="section-eyebrow">🕊️ &nbsp; in loving memory &nbsp; 🕊️</p>
+      <h2 class="section-title">For the man who<br/><em>still watches over you 🌟</em></h2>
+    </div>
+
+    <div class="floating-anim glowing-svg reveal" style="width:140px;height:140px;margin:0 auto 2rem;">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="angelBody" cx="50%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#fce8dc"/><stop offset="100%" stop-color="#f0c8b4"/>
+          </radialGradient>
+          <radialGradient id="angelWing" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(255,255,255,.95)"/><stop offset="100%" stop-color="rgba(201,216,222,.7)"/>
+          </radialGradient>
+        </defs>
+        <circle cx="70" cy="70" r="65" fill="rgba(247,234,179,.1)"/>
+        <ellipse cx="32" cy="78" rx="30" ry="18" fill="url(#angelWing)" transform="rotate(-20 32 78)"/>
+        <ellipse cx="108" cy="78" rx="30" ry="18" fill="url(#angelWing)" transform="rotate(20 108 78)"/>
+        <ellipse cx="70" cy="105" rx="24" ry="28" fill="url(#angelBody)"/>
+        <circle cx="70" cy="62" r="22" fill="url(#angelBody)"/>
+        <ellipse cx="70" cy="38" rx="18" ry="5" fill="none" stroke="rgba(247,234,179,.9)" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <div class="glass-card reveal">
+      
+      <div class="father-frame-container reveal">
+        <div class="pearl-beads frame-deco"></div>
+        <div class="flower-top frame-deco">🌸</div>
+        <div class="flower-bottom-l frame-deco">💮</div>
+        <div class="flower-bottom-r frame-deco">💮</div>
+        <div class="father-frame-main">
+          <img src="assets/father.jpeg" alt="A Father's Memory" class="father-image" onerror="this.src='https://via.placeholder.com/200x260?text=Father%27s+Photo'"/>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Cormorant Garamond', serif; font-size:1.8rem; margin-top:0;">
+        "A father's love does not end with his departure.<br/>
+        It learns a different language — spoken in quiet mornings,<br/>
+        in unexpected strength, in the part of his daughter<br/>
+        that simply <em style="color:var(--deep-rose);">refuses to break.</em>"
+      </h3>
+
+      <p class="trib-para reveal">
+        There are no words adequate for the particular weight of losing a father. What I believe — with everything I am — is that the love a father pours into his child does not evaporate when he leaves. It becomes something more quiet and more permanent: a warmth that arrives on the coldest days, a steadiness that appears in your spine when the world asks too much of you.
+      </p>
+
+      <p class="trib-para reveal">
+        Uncle was not just your father. He was your <em>first witness</em> — the first person in this world who looked at you and thought: this one is something rare. The compassion you carry, the grace with which you love people freely, the quiet resilience that lives just beneath your surface — that is his legacy. Walking. Breathing. Glowing. In you.
+      </p>
+
+      <div class="urdu-block reveal">
+        جب بھی تم تھک جاؤ — جب اندھیرا زیادہ لگے —<br>
+        تو یاد رکھنا: <em>انکل آج بھی قریب ہیں۔ صرف نگاہوں سے دور۔</em><br><br>
+        وہ آج وہاں سے دیکھ رہے ہوں گے — اپنی اس بیٹی کو —<br>
+        جو مشکلوں میں ٹوٹی نہیں، جھکی نہیں، بجھی نہیں —<br>
+        اور انکا دل <em>فخر سے بھر آتا ہوگا۔</em><br><br>
+        اگر وہ بول سکتے، تو کہتے:<br>
+        <span style="font-size:0.95em; color:var(--text-main);">"تنزیلہ — میری بیٹی — مجھے تم سے اس دنیا میں سب سے زیادہ فخر ہے۔"</span>
+      </div>
+
+      <p class="ameen-line reveal">Allah unhe Jannat-ul-Firdous mein aala muqam ata farmaye — Ameen</p>
+    </div>
+  </section>
+
+  
+
+  <div style="text-align: center; margin-top: 4rem; padding-bottom: 2rem;" class="reveal">
+  <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #7eb592; margin-bottom: 15px;">
+    There is one more thing I need to say...
+  </p>
+  <a href="fourth section.html" class="next-journey-btn">
+    💌 Open The Final Note
+  </a>
+</div>
+
+<style>
+  .next-journey-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #7eb592, #a5d4b8); /* Mint green gradient for peace/trust */
+    color: #ffffff !important;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 40px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(126, 181, 146, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    animation: pulseNextBtn 2s infinite;
+  }
+
+  .next-journey-btn:hover {
+    background: linear-gradient(135deg, #6aa37e, #8fc1a3);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(126, 181, 146, 0.6);
+  }
+
+  @keyframes pulseNextBtn {
+    0% { box-shadow: 0 0 0 0 rgba(126, 181, 146, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(126, 181, 146, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(126, 181, 146, 0); }
+  }
+</style>
+
+</div>
+
+<script>
+  function startJourney() {
+    createHearts();
+    const intro = document.getElementById('intro-screen');
+    const main = document.getElementById('main-content');
+    intro.style.opacity = '0';
+    intro.style.transform = 'translateY(-20px) scale(0.95)';
+    setTimeout(() => {
+      intro.style.display = 'none'; 
+      main.style.display = 'block';
+      setTimeout(() => {
+        main.style.opacity = '1';
+        main.style.transform = 'translateY(0)';
+        reveal();
+      }, 50);
+    }, 1200); 
+  }
+
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 80;
+      if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add("active"); }
+    }
+  }
+  window.addEventListener("scroll", reveal);
+
+  function createHearts() {
+    for(let i=0; i<15; i++) {
+      let heart = document.createElement("div");
+      heart.innerHTML = ["🌸", "💛", "✨", "🦋", "💖"][Math.floor(Math.random() * 5)];
+      heart.style.position = "fixed";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-20px";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      heart.style.zIndex = "99999";
+      heart.style.transition = "all 3s ease-out";
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.style.transform = `translateY(-100vh) rotate(${Math.random()*360}deg)`; heart.style.opacity = "0"; }, 50);
+      setTimeout(() => { heart.remove(); }, 3000);
+    }
+  }
+</script>
+
+</body>
+</html>
